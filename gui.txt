@@ -1,0 +1,26 @@
+panel{
+	x:'x y h w 250 - 2/' y:70 
+	w:'250'
+	h:'h 70 > 52 h 12 -?'
+	name:'igor' 
+	button{
+		x:0 y:0 w:70 h:'h' 
+		name:'valera'
+	}
+	button{
+		x:'w 70 -' y:'10 0 ret= @ 10 10$ 1 += 10$ 109000 eq !?< 0' w:70 h:'h'
+		name:'volodya'
+	}
+	
+}
+button{x:0 y:0 w:70 h:30 name:step}
+button{x:70 y:0 w:70 h:30 name:draw}
+img{
+	x:0 y:'h 100 250/ w*-' w:w h:'100 250/ w*' 
+	name:'xui'
+	animation{
+		duration:500
+		function:tanh
+		target{x:200}
+	}
+}
