@@ -47,20 +47,7 @@ public:
 		
 		
 	}
-	int gethh()
-	{
-		static unsigned int duration = 1500;
-		static int targh = 20;
-		if(anim)
-		{
-			unsigned int delta = clock()-start;
-			if(delta>duration){anim=false;int t = h;h=targh;targh=t;recalc();return h;}
-			float phase = sinf(1.57*(float)delta/(float)duration);
-			return (int)(h-((h-targh)*phase));
-
-		}
-		else return h;
-	}
+	
 	int getww()
 	{
 		static unsigned int duration = 500;
@@ -79,69 +66,17 @@ public:
 		}
 		else return w;
 	}
-	int getw()
-	{if(!par)return w;
-		static unsigned int duration = 500;
-		static int targ = 480 ;
-		const float pi = 3.14159265359;
-		if(anim)
+	Drawin* byname(string nam)
+	{
+		if(name==nam) return this;
+		//cout<<name+" "<<nam<<"; ";
+		for(int i=0;i<child.size();++i)
 		{
-			unsigned int delta = clock()-start;
-			recalc();
-			if(delta>duration){return targ;}
-			float phase = (1+tanhf(-2+4*(float)delta/(float)duration))/2;
-			return (int)(w-((w-targ)*phase));
-
+			Drawin* t = child[i]->byname(nam);
+			if(t!=nullptr) return t;
 		}
-		else return w;
-	}
-	int geth()
-	{if(!par)return h;
-		static unsigned int duration = 500;
-		static int targ = 300;
-		const float pi = 3.14159265359;
-		if(anim)
-		{
-			unsigned int delta = clock()-start;
-			recalc();
-			if(delta>duration){return targ;}
-			float phase = (1+tanhf(-2+4*(float)delta/(float)duration))/2;
-			return (int)(h-((h-targ)*phase));
-
-		}
-		else return h;
-	}
-	int getx()
-	{if(!par)return x;
-		static unsigned int duration = 500;
-		static int targ = 70;
-		const float pi = 3.14159265359;
-		if(anim)
-		{
-			unsigned int delta = clock()-start;
-			recalc();
-			if(delta>duration){return targ;}
-			float phase = (1+tanhf(-2+4*(float)delta/(float)duration))/2;
-			return (int)(x-((x-targ)*phase));
-
-		}
-		else return x;
-	}
-	int gety()
-	{if(!par)return y;
-		static unsigned int duration = 500;
-		static int targ = 120;
-		const float pi = 3.14159265359;
-		if(anim)
-		{
-			unsigned int delta = clock()-start;
-			recalc();
-			if(delta>duration){return targ;}
-			float phase = (1+tanhf(-2+4*(float)delta/(float)duration))/2;
-			return (int)(y-((y-targ)*phase));
-
-		}
-		else return y;
+		//throw invalid_argument(nam+" not fount");
+		return nullptr;
 	}
 	void recalc()
 	{
