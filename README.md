@@ -2,7 +2,7 @@
 <p align="center"><img src="https://i.imgur.com/xCSFUOT.png"></p> 
 Game engine for risc like games(similar to europa universalis, age of civilizations)
 
-##How to compile?
+## How to compile?
 I use mingw compiler. Use command " g++ engine.cpp -std=c++17 -lopengl32 -lgdi32 -lglu32" to compile.
 
 ## How to run?
